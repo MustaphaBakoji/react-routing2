@@ -1,0 +1,142 @@
+.App {
+  text-align: center;
+}
+
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.wrapper {
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px rgb(145, 145, 145);
+}
+
+.tBody {
+  margin: 0% 10%;
+
+  align-content: center;
+  width: 80%;
+  height: 100%;
+  height: fit-content;
+  /* margin: 10px; */
+  /* margin-bottom: 10vh; */
+  background-color: rgba(243, 235, 224, 0.479);
+  z-index: 1;
+
+
+
+
+}
+
+.backdrop {
+  top: 0%;
+  position: fixed;
+  background-color: rgba(35, 35, 35, 0.228);
+  height: 100vh;
+  width: 100%;
+  z-index: 10;
+}
+
+.dialogue {
+  position: relative;
+  width: 45vh;
+  height: 30vh;
+  z-index: 20;
+  background-color: rgb(255, 255, 255);
+
+  margin: auto;
+  margin-top: 15%;
+}
+
+#radio {
+  margin: 3vh;
+
+  left: 3vh;
+}
+
+.item p {
+  text-align: center;
+  /* text-decoration: line-through; */
+}
+
+.item {
+
+  width: 94%;
+  height: 8vh;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin: 4vh;
+  /* align-items: center; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-wrapper {
+  position: absolute;
+  width: fit-content;
+  margin-left: 8vh;
+  margin: 3vh 3vh;
+
+}
+
+.input-wrapper input {
+  border-radius: 3px;
+  height: 5vh;
+  border: none;
+
+}
+
+.input-btn {
+  width: 10vh;
+  height: 4vh;
+
+  position: absolute;
+  bottom: 3vh;
+  right: 3vh;
+  border: none;
+  background-color: rgba(39, 39, 108, 0.567);
+  border-radius: 10px;
+}
+
+.btn {
+  background-color: rgba(39, 39, 108, 0.567);
+  border-radius: 10px;
+  width: 12vh;
+  height: 7vh;
+  border: none;
+
+}
+
+.todo-nav {
+  margin-top: 20px;
+  margin-left: 10%;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-btn,
+.btn:hover {
+  background-color: rgb(68, 68, 156);
+  bottom: 3.5vh;
+  right: 3.5vh;
+}
+
+.change {
+
+  float: right;
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding-top: 2vh;
+}
