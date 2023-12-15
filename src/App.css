@@ -140,3 +140,18 @@
   text-align: center;
   padding-top: 2vh;
 }
+
+input [type='checkbox'] {
+  height: 7vh;
+  width: 7vh;
+  color: rgb(32, 32, 62);
+
+}
+
+#radio {
+  height: 4vh;
+  width: 4vh;
+
+  color: rgba(39, 39, 108, 0.567);
+  text-decoration: none;
+}

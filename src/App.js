@@ -3,16 +3,24 @@ import './App.css';
 import TodoBody from './compos/TodoBody';
 import DialogueBox from './compos/Dialogue';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 function App() {
+
   const [DisplayAddDialogue, setdisplayAddDialogue] = useState(false)
-  let initial_todo = []
+  let initial_todo = JSON.parse(localStorage.getItem('stored_todo'))['todos']
   const [toDoList, settoDoList] = useState(initial_todo)
   const [noEditing, setnoEditing] = useState(true)
   let displayDialogueHandler = () => {
     setdisplayAddDialogue(!false)
+
   }
+  useEffect(() => {
+    let storedFullList = localStorage.setItem('stored_todo', JSON.stringify({ 'todos': [...toDoList] }))
+    console.log(storedFullList)
+  }, [toDoList])
+
   const [save, setsave] = useState('Add')
 
   let HideHandler = () => {
@@ -23,6 +31,7 @@ function App() {
   let addTodoHandler = (text) => {
 
     if (text.trim().length > 0) {
+
       settoDoList((prev) => ([...prev, { text, id: toDoList.length + 1, striked: false }]))
 
 
@@ -40,7 +49,7 @@ function App() {
   }
   let checkHandler = (checked) => {
     let filtered = toDoList.filter((textItem) => { return (textItem.id === checked) })
-    filtered[0].striked = !filtered[0].striked
+
 
     let checkedList;
     let FullNew = toDoList.map((todo) => {
@@ -48,8 +57,8 @@ function App() {
 
 
         return {
-          id: todo.id,
-          text: todo.text,
+          ...todo,
+
           striked: !todo.striked
         }
 
@@ -59,20 +68,35 @@ function App() {
     })
     console.log(FullNew);
     settoDoList(FullNew)
+
+  }
+  const [category, setcategory] = useState("All")
+  let SelecHandler = (e) => {
+    if (e.target.value === 'All') {
+      setcategory('All')
+    } else if (e.target.value === 'completed') {
+      setcategory('completed')
+    }
+    else if (e.target.value === 'Uncompleted') {
+      setcategory('Uncompleted')
+    }
+
   }
 
   return (
     <div className="App">
       <nav className='todo-nav'> <button className='btn add-todo-btn' onClick={displayDialogueHandler}>Add todo</button>
 
-        <select >
+        <select onClick={SelecHandler}>
           <option>All</option>
           <option>completed</option>
           <option>Uncompleted</option>
         </select>
       </nav>
       {DisplayAddDialogue ? <DialogueBox Hide={HideHandler} onAddToDo={addTodoHandler} dialogueStatus={save} /> : null}
-      <TodoBody todoList={toDoList} onDelete={deleteHandler} onCheck={checkHandler} />
+      <TodoBody todoList={category === 'All' ? toDoList : category === "completed" ? toDoList.filter((todo) => (todo.striked === true)) : category === "Uncompleted" ? toDoList.filter((todo) => (todo.striked === false)) : toDoList
+
+      } onDelete={deleteHandler} onCheck={checkHandler} />
     </div>
   );
 }
